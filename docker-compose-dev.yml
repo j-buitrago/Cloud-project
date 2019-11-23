@@ -1,0 +1,25 @@
+tweetanalysis:
+  volumes: 
+    - ./tweetanalysis:/todo
+  links:
+    - db
+  build: ./tweetanalysis
+  environment:
+    time : "15"
+    access_token_key : "426086906-In5qv6pHW2ZBOHgjzyOWjHujQKaqKU42YwXP3fzV"
+    access_token_secret : "BtaeQF56Gbep8F0pidlkjDVXcogHJGB6fzB4OvolBRS0r"
+    consumer_key : "k8Wh8Z8tAJGbHDHyZWi7fYPWL"
+    consumer_secret : "h9CxOd9liLxsRUcFbNkRkmhSWSRCnzCBGjA6XpG50K7VLa3nb2"
+
+web:
+  volumes:
+    - ./web:/todo
+  links:
+    - db
+  build: ./web
+  ports:
+    - "5000:5000"
+
+    
+db:
+  image: mongo:3.0.2
